@@ -1,0 +1,20 @@
+.navbar-personalizado {
+    background-color: #5b1414 !important;
+}
+
+.navbar-personalizado .btn {
+    font-size: 30px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.navbar-personalizado .navbar-brand {
+    color: white !important;
+    font-size: 50px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.navbar-personalizado .nav-link {
+    color: white !important;
+    font-size: 20px;
+    margin-right: 20px;
+}

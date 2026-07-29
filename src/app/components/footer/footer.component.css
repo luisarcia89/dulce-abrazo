@@ -1,0 +1,17 @@
+.footer-marron {
+    background-color: #5b1414;
+    color: white;
+    padding: 50px 0;
+}
+
+.footer-marron h5 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.footer-marron p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 10px;
+}

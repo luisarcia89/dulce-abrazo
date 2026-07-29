@@ -1,0 +1,12 @@
+.image {
+  background-image: url('/assets/Fondo_pasteleria.png');
+  background-size: cover;
+  background-position: center;
+  height: 500px;
+}
+
+.btn-vermas {
+  background-color: #bc3e3e !important;
+  color: white !important;
+  border-radius: 10px;
+}
