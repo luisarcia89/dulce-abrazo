@@ -3,10 +3,12 @@ import { HomeComponent } from './pages/home/home.component';
 import { MisionComponent } from './pages/mision/mision.component';
 import { VisionComponent } from './pages/vision/vision.component';
 import { ProductosComponent } from './pages/productos/productos.component';
+import { ClientesComponent } from './pages/clientes/clientes.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'mision', component: MisionComponent },
   { path: 'vision', component: VisionComponent },
   { path: 'productos', component: ProductosComponent },
+  { path: 'clientes', component: ClientesComponent },
 ];
