@@ -5,6 +5,7 @@ import { PeticionService } from '../../servicios/peticion.service';
 import { Cliente } from '../../tipos/cliente';
 
 declare var $: any;
+declare var Notiflix: any;
 
 @Component({
   selector: 'app-clientes',
@@ -40,29 +41,34 @@ export class ClientesComponent implements OnInit {
       },
       error: (err) => {
         console.error('Error al listar clientes', err);
+        Notiflix.Notify.failure('No se pudieron cargar los clientes');
       }
     });
   }
 
   guardarCliente(): void {
     if (this.editando && this.nuevoCliente._id) {
-      this.peticionService.actualizarCliente(this.nuevoCliente._id, this.nuevoCliente).subscribe({
+      this.peticionService.actualizarCliente(this.nuevoCliente).subscribe({
         next: () => {
+          Notiflix.Notify.success('Cliente actualizado con éxito');
           this.cargarClientes();
           this.limpiarFormulario();
         },
         error: (err) => {
           console.error('Error al actualizar cliente', err);
+          Notiflix.Notify.failure('Error al actualizar el cliente');
         }
       });
     } else {
       this.peticionService.guardarCliente(this.nuevoCliente).subscribe({
         next: () => {
+          Notiflix.Notify.success('Cliente guardado con éxito');
           this.cargarClientes();
           this.limpiarFormulario();
         },
         error: (err) => {
           console.error('Error al guardar cliente', err);
+          Notiflix.Notify.failure('Error al guardar el cliente');
         }
       });
     }
@@ -83,12 +89,14 @@ export class ClientesComponent implements OnInit {
 
     this.peticionService.eliminarCliente(this.clienteAEliminar._id).subscribe({
       next: () => {
+        Notiflix.Notify.success('Cliente eliminado con éxito');
         this.cargarClientes();
         this.clienteAEliminar = null;
         $('#modalEliminar').modal('hide');
       },
       error: (err) => {
         console.error('Error al eliminar cliente', err);
+        Notiflix.Notify.failure('Error al eliminar el cliente');
       }
     });
   }

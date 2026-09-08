@@ -22,6 +22,22 @@
       <li class="nav-item">
         <a class="nav-link" routerLink="/clientes">Clientes</a>
       </li>
+      <li class="nav-item" *ngIf="nombrerol === 'Administrador'">
+        <a class="nav-link" routerLink="/admin/roles">Administración</a>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav">
+      <li class="nav-item" *ngIf="!logueado">
+        <a class="nav-link" routerLink="/login">Iniciar Sesión</a>
+      </li>
+
+      <li class="nav-item" *ngIf="logueado">
+        <span class="nav-link text-white">Hola, {{ nombreUsuario }}</span>
+      </li>
+      <li class="nav-item" *ngIf="logueado">
+        <a class="nav-link" href="#" (click)="cerrarSesion()">Cerrar Sesión</a>
+      </li>
     </ul>
   </div>
 </nav>

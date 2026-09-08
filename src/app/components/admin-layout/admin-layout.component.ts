@@ -1,20 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterLink, Router } from '@angular/router';
-import { CommonModule } from '@angular/common';
+import { RouterLink, RouterOutlet, Router } from '@angular/router';
 import { PeticionService } from '../../servicios/peticion.service';
 
 declare var Notiflix: any;
 
 @Component({
-  selector: 'app-header',
+  selector: 'app-admin-layout',
   standalone: true,
-  imports: [RouterLink, CommonModule],
-  templateUrl: './header.component.html',
-  styleUrl: './header.component.css'
+  imports: [RouterLink, RouterOutlet],
+  templateUrl: './admin-layout.component.html',
+  styleUrl: './admin-layout.component.css'
 })
-export class HeaderComponent implements OnInit {
+export class AdminLayoutComponent implements OnInit {
 
-  logueado: boolean = false;
   nombreUsuario: string = '';
   nombrerol: string = '';
 
@@ -24,19 +22,13 @@ export class HeaderComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.verificarSesion();
-  }
-
-  verificarSesion(): void {
     this.peticionService.estadoSesion().subscribe({
       next: (respuesta) => {
-        this.logueado = respuesta.logueado;
         this.nombreUsuario = respuesta.nombre || '';
         this.nombrerol = respuesta.nombrerol || '';
       },
       error: (err) => {
         console.error('Error al verificar sesión', err);
-        this.logueado = false;
       }
     });
   }
@@ -45,10 +37,7 @@ export class HeaderComponent implements OnInit {
     this.peticionService.logout().subscribe({
       next: () => {
         Notiflix.Notify.success('Sesión cerrada correctamente');
-        this.logueado = false;
-        this.nombreUsuario = '';
-        this.nombrerol = '';
-        this.router.navigate(['/']);
+        window.location.href = '/';
       },
       error: (err) => {
         console.error('Error al cerrar sesión', err);

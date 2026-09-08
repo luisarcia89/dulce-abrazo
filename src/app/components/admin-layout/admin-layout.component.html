@@ -1,0 +1,40 @@
+<div class="d-flex" style="min-height: 100vh;">
+
+  <!-- Barra lateral -->
+  <div class="bg-admin-lateral text-white p-3" style="width: 250px;">
+
+    <div class="text-center mb-4">
+      <div class="rounded-circle bg-secondary mx-auto mb-2" style="width: 70px; height: 70px;"></div>
+      <div>{{ nombreUsuario }}</div>
+      <small class="text-white-50">{{ nombrerol }}</small>
+    </div>
+
+    <ul class="nav flex-column">
+      <li class="nav-item mb-2">
+        <a class="nav-link text-white" routerLink="/admin/roles">Roles</a>
+      </li>
+      <li class="nav-item mb-2">
+        <a class="nav-link text-white" routerLink="/admin/apis">Apis</a>
+      </li>
+      <li class="nav-item mb-2">
+        <a class="nav-link text-white" routerLink="/admin/apiroles">Api Roles</a>
+      </li>
+      <li class="nav-item mb-2">
+        <a class="nav-link text-white" routerLink="/admin/productos">Productos</a>
+      </li>
+      <li class="nav-item mb-2">
+        <a class="nav-link text-white" routerLink="/admin/clientes">Clientes</a>
+      </li>
+      <li class="nav-item mt-4">
+        <a class="nav-link text-white" href="#" (click)="cerrarSesion()">Cerrar Sesión</a>
+      </li>
+    </ul>
+
+  </div>
+
+  <!-- Contenido de cada pantalla (Roles, Apis, ApiRoles, Productos, Clientes) -->
+  <div class="flex-grow-1 p-4">
+    <router-outlet></router-outlet>
+  </div>
+
+</div>
