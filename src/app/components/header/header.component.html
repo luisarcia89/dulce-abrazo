@@ -19,11 +19,11 @@
       <li class="nav-item">
         <a class="nav-link" routerLink="/productos">Productos</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/clientes">Clientes</a>
-      </li>
       <li class="nav-item" *ngIf="nombrerol === 'Administrador'">
         <a class="nav-link" routerLink="/admin/roles">Administración</a>
+      </li>
+      <li class="nav-item" *ngIf="nombrerol === 'Cliente'">
+        <a class="nav-link" routerLink="/admin/perfil">Mi Panel</a>
       </li>
     </ul>
 

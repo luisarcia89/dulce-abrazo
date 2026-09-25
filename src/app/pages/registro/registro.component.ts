@@ -28,8 +28,8 @@ export class RegistroComponent {
   registrar(): void {
     this.peticionService.registrarUsuario(this.nuevoUsuario).subscribe({
       next: () => {
-        Notiflix.Notify.success('Usuario registrado con éxito, ya puedes iniciar sesión');
-        this.router.navigate(['/login']);
+        Notiflix.Notify.success('Usuario registrado con éxito. Revisa tu correo para activar la cuenta');
+        this.router.navigate(['/activar']);
       },
       error: (err) => {
         console.error('Error al registrar usuario', err);

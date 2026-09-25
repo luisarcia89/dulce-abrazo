@@ -1,6 +1,5 @@
 <div class="d-flex" style="min-height: 100vh;">
 
-  <!-- Barra lateral -->
   <div class="bg-admin-lateral text-white p-3" style="width: 250px;">
 
     <div class="text-center mb-4">
@@ -10,21 +9,30 @@
     </div>
 
     <ul class="nav flex-column">
-      <li class="nav-item mb-2">
+
+      <li class="nav-item mb-2" *ngIf="nombrerol === 'Administrador'">
         <a class="nav-link text-white" routerLink="/admin/roles">Roles</a>
       </li>
-      <li class="nav-item mb-2">
+      <li class="nav-item mb-2" *ngIf="nombrerol === 'Administrador'">
         <a class="nav-link text-white" routerLink="/admin/apis">Apis</a>
       </li>
-      <li class="nav-item mb-2">
+      <li class="nav-item mb-2" *ngIf="nombrerol === 'Administrador'">
         <a class="nav-link text-white" routerLink="/admin/apiroles">Api Roles</a>
       </li>
-      <li class="nav-item mb-2">
+      <li class="nav-item mb-2" *ngIf="nombrerol === 'Administrador'">
+        <a class="nav-link text-white" routerLink="/admin/usuarios">Usuarios</a>
+      </li>
+      <li class="nav-item mb-2" *ngIf="nombrerol === 'Administrador'">
         <a class="nav-link text-white" routerLink="/admin/productos">Productos</a>
       </li>
-      <li class="nav-item mb-2">
+      <li class="nav-item mb-2" *ngIf="nombrerol === 'Administrador'">
         <a class="nav-link text-white" routerLink="/admin/clientes">Clientes</a>
       </li>
+
+      <li class="nav-item mb-2">
+        <a class="nav-link text-white" routerLink="/admin/perfil">Mi Perfil</a>
+      </li>
+
       <li class="nav-item mt-4">
         <a class="nav-link text-white" href="#" (click)="cerrarSesion()">Cerrar Sesión</a>
       </li>
@@ -32,7 +40,7 @@
 
   </div>
 
-  <!-- Contenido de cada pantalla (Roles, Apis, ApiRoles, Productos, Clientes) -->
+  <!-- Contenido de cada pantalla -->
   <div class="flex-grow-1 p-4">
     <router-outlet></router-outlet>
   </div>

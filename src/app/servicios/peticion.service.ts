@@ -6,6 +6,7 @@ import { Cliente } from '../tipos/cliente';
 import { Roles } from '../tipos/roles';
 import { Apis } from '../tipos/apis';
 import { ApiRoles } from '../tipos/apiroles';
+import { Usuario } from '../tipos/usuario';
 
 @Injectable({
   providedIn: 'root'
@@ -65,6 +66,42 @@ export class PeticionService {
 
   estadoSesion(): Observable<any> {
     return this.http.get(`${this.urlUsuarios}/Estado`, { withCredentials: true });
+  }
+
+  activarCuenta(data: { email: string, codigo: string }): Observable<any> {
+    return this.http.post(`${this.urlUsuarios}/Activar`, data, { withCredentials: true });
+  }
+
+  solicitarCodigoRecuperacion(data: { email: string }): Observable<any> {
+    return this.http.post(`${this.urlUsuarios}/SolicitarCodigoRecuperacion`, data, { withCredentials: true });
+  }
+
+  recuperarPassword(data: { email: string, codigo: string, password: string }): Observable<any> {
+    return this.http.post(`${this.urlUsuarios}/RecuperarPassword`, data, { withCredentials: true });
+  }
+
+  misDatos(): Observable<any> {
+    return this.http.get(`${this.urlUsuarios}/MisDatos`, { withCredentials: true });
+  }
+
+  cambiarPassword(data: { passwordActual: string, passwordNueva: string }): Observable<any> {
+    return this.http.post(`${this.urlUsuarios}/CambiarPassword`, data, { withCredentials: true });
+  }
+
+  guardarUsuario(usuario: Usuario): Observable<any> {
+    return this.http.post(`${this.urlUsuarios}/Guardar`, usuario, { withCredentials: true });
+  }
+
+  listarUsuarios(): Observable<Usuario[]> {
+    return this.http.get<Usuario[]>(`${this.urlUsuarios}/CargarTodos`, { withCredentials: true });
+  }
+
+  actualizarUsuario(usuario: Usuario): Observable<any> {
+    return this.http.put(`${this.urlUsuarios}/Actualizar`, usuario, { withCredentials: true });
+  }
+
+  eliminarUsuario(id: string): Observable<any> {
+    return this.http.delete(`${this.urlUsuarios}/Eliminar`, { body: { _id: id }, withCredentials: true });
   }
 
 

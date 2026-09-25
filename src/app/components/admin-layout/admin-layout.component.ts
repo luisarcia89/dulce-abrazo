@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterLink, RouterOutlet, Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 import { PeticionService } from '../../servicios/peticion.service';
 
 declare var Notiflix: any;
@@ -7,7 +8,7 @@ declare var Notiflix: any;
 @Component({
   selector: 'app-admin-layout',
   standalone: true,
-  imports: [RouterLink, RouterOutlet],
+  imports: [RouterLink, RouterOutlet, CommonModule],
   templateUrl: './admin-layout.component.html',
   styleUrl: './admin-layout.component.css'
 })

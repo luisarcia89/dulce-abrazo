@@ -14,6 +14,7 @@ import { Producto } from '../../tipos/producto';
 export class ProductosComponent implements OnInit {
 
   productos: Producto[] = [];
+  esAdministrador: boolean = false;
 
   nuevoProducto: Producto = {
     nombre: '',
@@ -26,7 +27,20 @@ export class ProductosComponent implements OnInit {
   constructor(private peticionService: PeticionService) { }
 
   ngOnInit(): void {
+    this.verificarSesion();
     this.cargarProductos();
+  }
+
+  verificarSesion(): void {
+    this.peticionService.estadoSesion().subscribe({
+      next: (respuesta) => {
+        this.esAdministrador = respuesta.logueado && respuesta.nombrerol === 'Administrador';
+      },
+      error: (err) => {
+        console.error('Error al verificar sesión', err);
+        this.esAdministrador = false;
+      }
+    });
   }
 
   cargarProductos(): void {
